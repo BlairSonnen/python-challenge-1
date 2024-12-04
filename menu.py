@@ -125,8 +125,8 @@ while place_order:
                     }
                     i += 1
             # 2. Ask customer to input menu item number
-            customer_menu_choice = input("Type you menu selection: ")
-
+            customer_menu_choice = input("Type your menu selection: ")
+            print(f"You\'ve selected {customer_menu_choice}")
             # 3. Check if the customer typed a number
             if customer_menu_choice.isdigit():
             #print("customer_menu_choice is type" , type(customer_menu_choice))
@@ -138,9 +138,9 @@ while place_order:
                     # Store the item name as a variable
                     selection_item = menu_items[customer_menu_choice]["Item name"]
                     selection_price = menu_items[customer_menu_choice]["Price"]
-                    print(f"Youve selected {selection_item}")
+                    print(f"You\'ve selected {selection_item}")
                     # Ask the customer for the quantity of the menu item
-                    customer_quantity = input(f"How many would you like to order")
+                    customer_quantity = input(f"How many would you like to order?")
 
                     # Check if the quantity is a number, default to 1 if not
                     if customer_quantity.isdigit():
@@ -157,13 +157,15 @@ while place_order:
                     )
 
                     # Tell the customer that their input isn't valid
-
+                else:
+                    print(f"{customer_menu_choice} is not an option on our menu.\nPlease select from our menu items listed.")
 
                 # Tell the customer they didn't select a menu option
-    
+            else:
+                print(f"{customer_menu_choice} is not an option on our menu")
         else:
             # Tell the customer they didn't select a menu option
-            print(f"{menu_category} was not a menu option.")
+            print(f"{menu_category} was not a menu category option.")
     else:
         # Tell the customer they didn't select a number
         print("You didn't select a number.")
@@ -173,9 +175,17 @@ while place_order:
         keep_ordering = input("Would you like to keep ordering? (Y)es or (N)o ")
 
         # 5. Check the customer's input
-
+        if keep_ordering.lower() == "n":
+            #place_order = False
+            # Thank the customer for their order
+            print("Thank you for your order.")
+            # Exit the keep ordering question loop
+            break
+        elif keep_ordering.lower() == "y":
+            # Exit the keep ordering question loop
+            break
                 # Keep ordering
-
+            
                 # Exit the keep ordering question loop
 
                 # Complete the order
