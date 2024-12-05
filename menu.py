@@ -206,7 +206,8 @@ print("--------------------------|--------|----------")
 
 # 6. Loop through the items in the customer's order
 if len(order_list) > 0:
-    for item in order_list:
+    for key, item in enumerate(order_list):
+ 
  
     # 7. Store the dictionary items as variables
            # 6a. Create a variable for the item name
@@ -217,18 +218,31 @@ if len(order_list) > 0:
         item_quantity = item["Quantity"]
         # 6d. Create a variable for the item total
         item_total = item_price * item_quantity
-        # 6e. Print the item name, price, and quantity
         
 
     # 8. Calculate the number of spaces for formatted printing
-
-
+        num_item_spaces = 25 - len(item_name)
+  
+                
     # 9. Create space strings
-
+        item_spaces = " " * num_item_spaces
 
     # 10. Print the item name, price, and quantity
-    print(f"{item_name:24} | ${item_price:5.2f} | {item_quantity:5}")
+        """this worked, but I didnt prefer it:"""
+        #print(f"{item_name}{item_spaces} | ${item_price:.2f}  |     {item_quantity}")
+        """this is just slightly cleaner"""
+        print(f"{item_name:25} | ${item_price:5.2f} | {item_quantity:5}")
 
 # 11. Calculate the cost of the order using list comprehension
+
 # Multiply the price by quantity for each item in the order list, then sum()
+total_order_cost = sum ([item["Price"] * item["Quantity"] for item in order_list])
 # and print the prices.
+menu_dashes = "-" * 46
+print(menu_dashes)
+print(f"""
+           Your total is ${total_order_cost:.2f}
+         Thank you for your order!
+     Please give us 5 ***** on Google
+        """)
+print(menu_dashes)
