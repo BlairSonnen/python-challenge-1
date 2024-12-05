@@ -174,44 +174,51 @@ while place_order:
         # Ask the customer if they would like to order anything else
         keep_ordering = input("Would you like to keep ordering? (Y)es or (N)o ")
 
-        # 5. Check the customer's input
-        if keep_ordering.lower() == "n":
-            #place_order = False
-            # Thank the customer for their order
-            print("Thank you for your order.")
-            # Exit the keep ordering question loop
-            break
-        elif keep_ordering.lower() == "y":
-            # Exit the keep ordering question loop
-            break
+        match keep_ordering.lower():
+            # Customer chose yes
+            case 'y':
                 # Keep ordering
-            
+                place_order = True
                 # Exit the keep ordering question loop
-
+                break
+            # Customer chose no
+            case 'n':
                 # Complete the order
-
-                # Since the customer decided to stop ordering, thank them for
-                # their order
-
+                place_order = False
+                # Since the customer decided to stop ordering, thank them for their order
+                print("Thank you for your order.")
                 # Exit the keep ordering question loop
-
-
+                break
+            # Customer typed an invalid input
+            case _:
                 # Tell the customer to try again
+                print("I didn't understand your response. Please try again.")
 
 
 # Print out the customer's order
 print("This is what we are preparing for you.\n")
 
 # Uncomment the following line to check the structure of the order
-#print(order)
+#print(order_list)
 
 print("Item name                 | Price  | Quantity")
 print("--------------------------|--------|----------")
 
 # 6. Loop through the items in the customer's order
-
+if len(order_list) > 0:
+    for item in order_list:
+ 
     # 7. Store the dictionary items as variables
-
+           # 6a. Create a variable for the item name
+        item_name = item["Item name"]
+        # 6b. Create a variable for the item price
+        item_price = item["Price"]
+        # 6c. Create a variable for the item quantity
+        item_quantity = item["Quantity"]
+        # 6d. Create a variable for the item total
+        item_total = item_price * item_quantity
+        # 6e. Print the item name, price, and quantity
+        
 
     # 8. Calculate the number of spaces for formatted printing
 
@@ -220,7 +227,7 @@ print("--------------------------|--------|----------")
 
 
     # 10. Print the item name, price, and quantity
-
+    print(f"{item_name:24} | ${item_price:5.2f} | {item_quantity:5}")
 
 # 11. Calculate the cost of the order using list comprehension
 # Multiply the price by quantity for each item in the order list, then sum()
