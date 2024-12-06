@@ -16,3 +16,6 @@ Much of the ordering system is straightforward.
 
 Our program will store and sum your order for you. 
 ..but don't forget to give us 5 stars on google!
+
+-- Special note --
+much of this code was not originally authored by me but provided as a working example for the class I am taking. For more specifics on the original source please contact me.
