@@ -54,15 +54,30 @@ menu = {
 # menu item name, item price, and quantity ordered
 """Output example {"Item name": "string", 
     "Price": float, 
-    "Quantity": int},
+    "Quantity": int},"""
 
-    {"Item name": "string", 
-    "Price": float, 
-    "Quantity": int}"""
-order_list = [ ]       
+# Welcome message formattting
+menu_dashes = "-" * 46
+welcome_message = "Welcome to Chez Blair food truck."
+num_mess_spaces = 46 - len(welcome_message)
+welcome_spacing = (num_mess_spaces//2) * " "
+welcome_design = "***"
+num_des_spaces = 46 - len(welcome_design)
+welcome_des_spc = (num_des_spaces//2) * " "
+
+
+# Order storage
+order_list = [ ]
 
 # Launch the store and present a greeting to the customer
-print("Welcome to the variety food truck.")
+
+print(f"""
+{menu_dashes}
+{welcome_des_spc}{welcome_design}
+{welcome_spacing}{welcome_message}
+{welcome_des_spc}{welcome_design}
+{menu_dashes}
+""")
 
 # Customers may want to order multiple items, so let's create a continuous
 # loop
@@ -96,7 +111,6 @@ while place_order:
             menu_category_name = menu_items[int(menu_category)]
             # Print out the menu category name they selected
             print(f"You selected {menu_category_name}")
-
             # Print out the menu options from the menu_category_name
             print(f"What {menu_category_name} item would you like to order?")
             i = 1
@@ -125,7 +139,7 @@ while place_order:
                     }
                     i += 1
             # 2. Ask customer to input menu item number
-            customer_menu_choice = input("Type your menu selection: ")
+            customer_menu_choice = input("Enter your menu selection: ")
             print(f"You\'ve selected {customer_menu_choice}")
             # 3. Check if the customer typed a number
             if customer_menu_choice.isdigit():
@@ -140,7 +154,7 @@ while place_order:
                     selection_price = menu_items[customer_menu_choice]["Price"]
                     print(f"You\'ve selected {selection_item}")
                     # Ask the customer for the quantity of the menu item
-                    customer_quantity = input(f"How many would you like to order?")
+                    customer_quantity = input(f"How many {selection_item}s would you like to order?\nAny non-numerical imput defaults quantity to 1: ")
 
                     # Check if the quantity is a number, default to 1 if not
                     if customer_quantity.isdigit():
