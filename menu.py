@@ -154,7 +154,7 @@ while place_order:
                     selection_price = menu_items[customer_menu_choice]["Price"]
                     print(f"You\'ve selected {selection_item}")
                     # Ask the customer for the quantity of the menu item
-                    customer_quantity = input(f"How many {selection_item}s would you like to order?")
+                    customer_quantity = input(f"How many {selection_item}s would you like to order?\nAny non-numerical imput defaults quantity to 1: ")
 
                     # Check if the quantity is a number, default to 1 if not
                     if customer_quantity.isdigit():
